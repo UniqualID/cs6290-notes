@@ -100,7 +100,7 @@ Fully Associative = N-way set associative
 Always start with offset bits, based on block size. Then, determine index bits. Rest of the bits is the tag.
 
 - Offset bits = $log_2(\text{block size})$
-- Index bits = $log_2(\text{\# of sets})$
+- Index bits = $log_2(\text{sets})$
 
 ## Cache Replacement
 - Set is full

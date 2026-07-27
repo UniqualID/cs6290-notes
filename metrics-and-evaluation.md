@@ -90,7 +90,7 @@ For example, in the table above we would obtain:
 
 Geometric mean of speedup values (2.0, 0.7, 2.2) also result in 1.456.
 
-$$ \text{geometric mean} = \sqrt[n]{a_1\*a_2\*...a_n} $$
+$$ \text{geometric mean} = \sqrt[n]{a_1*a_2*...a_n} $$
 
 As a general rule, if you are trying to average things that are ratios (speedups are ratios), you cannot simply average them. Use the geometric mean instead.
 
@@ -114,7 +114,7 @@ Each component allows us to think about the computer architecture and how it can
 ### Iron Law for Unequal Instruction Times
 
 When instructions have different number of cycles, sum them individually:
-$$ \sum_i (IC_i\* CPI_i) * \frac{\text{time}}{\text{cycle}} $$
+$$ \sum_i (IC_i* CPI_i) * \frac{\text{time}}{\text{cycle}} $$
 
 where $ IC_i $ is the instruction count for instruction $ i $, and $CPI_i$ is the cycles for instruction $ i $.
 

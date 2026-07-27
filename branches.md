@@ -39,8 +39,8 @@ Assumption below: 20% of all instructions are branches (common in programs).
 
 | Accuracy $\downarrow$ | Resolve in 3rd stage | Resolve in 10th stage |
 |---|:---:|:---:|
-| 50% for BR<br>100% all other | $1 + 0.5\*0.2\*2$<br>$= 1.2$ | $1 + 0.5\*0.2\*9$<br>$= 1.9$ |
-| 90% of BR<br>100% all other | $1 + 0.1\*0.2\*2$<br>$= 1.04$ | $1 + 0.1\*0.2\*9$<br>$= 1.18$ |
+| 50% for BR<br>100% all other | $1 + 0.5*0.2*2$<br>$= 1.2$ | $1 + 0.5*0.2*9$<br>$= 1.9$ |
+| 90% of BR<br>100% all other | $1 + 0.1*0.2*2$<br>$= 1.04$ | $1 + 0.1*0.2*9$<br>$= 1.18$ |
 | _(Speedup)_ | _1.15_ | _1.61_ |
 
 Conclusions: A better branch predictor will help regardless of the pipeline, but the _amount_ of help changes with the pipeline depth.
@@ -68,9 +68,9 @@ Accuracy:
 ## Why We Need Better Prediction?
 | | Not Taken<br>88% | Better<br>99% | Speedup |
 |---|:---:|:---:|:---:|
-| 5-stages<br>(3rd stage) | $1 + 0.12\*2$<br>$CPI = 1.24$ | $1 + 0.01\*2$<br>$CPI = 1.02$ | $1.22$ |
-| 14-stages<br>(11th stage) | $1 + 0.12\*10$<br>$CPI = 2.2$ | $1 + 0.01\*10$<br>$CPI = 1.1$ | $2$ |
-| 11th stage<br>(4 inst/cycle) | $0.25 + 0.12\*10$<br>$CPI = 1.45$ | $0.25 + 0.01\*10$<br>$CPI = 0.35$ | $4.14$ |
+| 5-stages<br>(3rd stage) | $1 + 0.12*2$<br>$CPI = 1.24$ | $1 + 0.01*2$<br>$CPI = 1.02$ | $1.22$ |
+| 14-stages<br>(11th stage) | $1 + 0.12*10$<br>$CPI = 2.2$ | $1 + 0.01*10$<br>$CPI = 1.1$ | $2$ |
+| 11th stage<br>(4 inst/cycle) | $0.25 + 0.12*10$<br>$CPI = 1.45$ | $0.25 + 0.01*10$<br>$CPI = 0.35$ | $4.14$ |
 
 If we have a deeper pipeline or are able to execute more instructions per cycle, the better predictor is more important than in simpler processors, because the cost of misprediction is much higher (more instructions lost with a misprediction).
 

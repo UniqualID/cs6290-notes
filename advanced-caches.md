@@ -212,8 +212,8 @@ When L2 cache is used alone, it has a higher hit rate (97.5% vs 75%) - so it loo
 
 ### Global vs. Local Hit Rate
 - Global Hit Rate:  1 - Global Miss Rate
-- Global Miss Rate: $\frac{\text{\# of misses in this cache}}{\text{\# of all memory references}}$
-- Local Hit Rate: $\frac{\text{\# of hits}}{\text{\# of accesses to this cache}}$
+- Global Miss Rate: $\frac{\text{misses in this cache}}{\text{all memory references}}$
+- Local Hit Rate: $\frac{\text{hits}}{\text{accesses to this cache}}$
 - Misses per 1000 instructions (MPKI)
   - Similar to Miss Rate, but instead of being based on memory references, it normalizes based on number of instructions
 

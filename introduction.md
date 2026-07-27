@@ -55,7 +55,7 @@ Two kinds of power a processor consumes.
 ### Active Power
 Can be computed by
 
-$$P = \tfrac 12 \*C\*V^2\*f\*\alpha$$
+$$P = \tfrac 12 *C*V^2*f*\alpha$$
 Where
 $$\\\\C = \text{capacitance}\\\\P = \text{power supply voltage}\\\\f = \text{frequency} \\\\ \alpha = \text{activity factor (some percentage of transistors active each clock cycle)}$$
 
