@@ -27,9 +27,9 @@ If you design given current technology/parts, you get an obsolete computer by th
 ### Moore's Law
 
 Used to predict technology trends. Every 18-24 months, you get 2x transistors for same chip area:    
-\\( \Rightarrow \\) Processor speed doubles    
-\\( \Rightarrow \\) Energy/Operation cut in half    
-\\( \Rightarrow \\) Memory capacity doubles
+$ \Rightarrow $ Processor speed doubles    
+$ \Rightarrow $ Energy/Operation cut in half    
+$ \Rightarrow $ Memory capacity doubles
 
 ### Memory Wall
 
@@ -75,16 +75,16 @@ $$ \text{fabrication yield} =  \tfrac{\text{working chips}}{\text{chips on wafer
 
 ![Fabrication Yield](https://i.imgur.com/vIIzt0I.png)
 
-Fabrication cost example: If a wafer costs $5000, and has approximately 10 defects, how much does each chip cost in the following example? Remember \\( \text{chip cost} = \tfrac{\text{wafer cost}}{\text{fabrication yield} } \\)
+Fabrication cost example: If a wafer costs \$5000, and has approximately 10 defects, how much does each chip cost in the following example? Remember $ \text{chip cost} = \tfrac{\text{wafer cost}}{\text{fabrication yield} } $
 
 | Size | Chips/Wafer | Yield |  Cost  | 
 |------|-------------|-------|--------|
-|Small |    400      |  390  | $12.80 |
-|Large |     96      |   86  | $58.20 |
-| Huge |     20      |   11  | $454.55|
+|Small |    400      |  390  | \$12.80 |
+|Large |     96      |   86  | \$58.20 |
+| Huge |     20      |   11  | \$454.55|
 
 Benefit from Moore's Law in two ways:
-* Smaller \\( \Rightarrow \\) much lower cost
-* Same Area \\( \Rightarrow \\) faster for same cost
+* Smaller $ \Rightarrow $ much lower cost
+* Same Area $ \Rightarrow $ faster for same cost
 
 *[IPS]: Instructions per Second

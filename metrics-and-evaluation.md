@@ -8,7 +8,7 @@ sidebar_label: Metrics and Evaluation
 
 ## Performance
 
-* Latency (time start \\( \rightarrow \\) done)
+* Latency (time start $ \rightarrow $ done)
 * Throughput (#/second) (not necessarily 1/latency due to pipelining)
 
 ### Comparing Performance
@@ -16,17 +16,17 @@ sidebar_label: Metrics and Evaluation
 "X is N times faster than Y"
 
 Speedup = N = speed(X)/speed(Y)    
-\\( \Rightarrow \\) N = Throughput(X)/Throughput(Y)    
-\\( \Rightarrow \\) N = Latency(Y)/Latency(X)    
+$ \Rightarrow $ N = Throughput(X)/Throughput(Y)    
+$ \Rightarrow $ N = Latency(Y)/Latency(X)    
 (notice Y and X for each)
 
 ### Speedup
 
-Speedup > 1 \\( \Rightarrow \\) Improved Performance
+Speedup > 1 $ \Rightarrow $ Improved Performance
 * Shorter execution time
 * Higher throughput
 
-Speedup < 1 \\( \Rightarrow \\) Worse Performance
+Speedup < 1 $ \Rightarrow $ Worse Performance
 
 Performance ~ Throughput
 
@@ -116,7 +116,7 @@ Each component allows us to think about the computer architecture and how it can
 When instructions have different number of cycles, sum them individually:
 $$ \sum_i (IC_i\* CPI_i) * \frac{\text{time}}{\text{cycle}} $$
 
-where \\( IC_i \\) is the instruction count for instruction \\( i \\), and \\(CPI_i\\) is the cycles for instruction \\( i \\).
+where $ IC_i $ is the instruction count for instruction $ i $, and $CPI_i$ is the cycles for instruction $ i $.
 
 ## Amdahl's Law
 
@@ -124,7 +124,7 @@ Used when only part of the program or certain instructions. What is the overall 
 
 $$ speedup = \frac{1}{(1-frac_{enh}) + \frac{frac_{enh}}{speedup_{enh}}} $$
 
-where \\( frac_{enh} \\) represents the fraction of the execution **TIME** enhanced by the changes, and \\( speedup_{enh} \\) represents the amount that change was sped up.
+where $ frac_{enh} $ represents the fraction of the execution **TIME** enhanced by the changes, and $ speedup_{enh} $ represents the amount that change was sped up.
 
 NOTE: Always ensure the fraction represents TIME, not any other quantity (cycles, etc.). First, convert changes into execution time before the change, and execution time after the change.
 
@@ -133,10 +133,10 @@ NOTE: Always ensure the fraction represents TIME, not any other quantity (cycles
 Compare these enhancements:
 * Enhancement 1
   * Speedup of 20x on 10% of time
-  * \\( \Rightarrow \\) speedup = 1.105
+  * $ \Rightarrow $ speedup = 1.105
 * Enhancement 2
   * Speedup of 1.6x on 80% of time
-    * \\( \Rightarrow \\) speedup = 1.43
+    * $ \Rightarrow $ speedup = 1.43
 
 Even an infinite speedup in enhancement 1 only yields 1.111 overall speedup. 
 
@@ -150,8 +150,8 @@ Takeaway: Make the common case fast
 Example:
 * Improvement of 2x on 90%
 * Slow down rest by 10x
-* Speedup = \\( \frac{1}{\frac{0.1}{0.1} + \frac{0.9}{2}} = \frac{1}{1+0.45} = 0.7 \\)
-* \\( \Rightarrow \\) Net slowdown, not speedup.
+* Speedup = $ \frac{1}{\frac{0.1}{0.1} + \frac{0.9}{2}} = \frac{1}{1+0.45} = 0.7 $
+* $ \Rightarrow $ Net slowdown, not speedup.
 
 ### Diminishing Returns
 

@@ -16,7 +16,7 @@ Each logical phase of operation in the processor (fetch, decode, ALU, memory, wr
 ## Pipeline CPI
 Is Pipeline CPI = always 1?
 
-On initial fill, CPI \\( \rightarrow \\) 1 when # instruction \\( \rightarrow \infty \\). If pipeline stalls (a single phase breaks down), then on the next cycle the successive phase will be doing no work. Therefore, CPI is always > 1 if any stalls are possible. For example, if every 5 cycles one phase stalls, your CPI is 6 cycles/5 units = 1.2 CPI.
+On initial fill, CPI $ \rightarrow $ 1 when # instruction $ \rightarrow \infty $. If pipeline stalls (a single phase breaks down), then on the next cycle the successive phase will be doing no work. Therefore, CPI is always > 1 if any stalls are possible. For example, if every 5 cycles one phase stalls, your CPI is 6 cycles/5 units = 1.2 CPI.
 
 ## Processor Pipeline Stalls
 
@@ -100,10 +100,10 @@ WAW and WAR dependencies are also called "False" or "Name" dependencies. RAR (Re
 
 |   | RAW | WAR | WAW |
 |---|---|---|---|
-| \\( I1 \rightarrow I2 \\) | x | - | - |
-| \\( I1 \rightarrow I3 \\) | - | - | x |
-| \\( I1 \rightarrow I4 \\) | - | - | - |
-| \\( I2 \rightarrow I3 \\) | - | x | - |
+| $ I1 \rightarrow I2 $ | x | - | - |
+| $ I1 \rightarrow I3 $ | - | - | x |
+| $ I1 \rightarrow I4 $ | - | - | - |
+| $ I2 \rightarrow I3 $ | - | x | - |
 
 ## Dependencies and Hazards
 
@@ -128,14 +128,14 @@ For data dependence, we can stall the next instruction, or fix the instruction b
 
 For an ideal CPI = 1, we consider the following:
 
-More Stages \\( \rightarrow \\) more hazards (CPI \\( \uparrow \\)), but less work per stage ( cycle time \\( \downarrow \\))
+More Stages $ \rightarrow $ more hazards (CPI $ \uparrow $), but less work per stage ( cycle time $ \downarrow $)
 
 From iron law, Execution Time = # Instructions * CPI * Cycle Time
 
 \# Stages should be chosen to balance CPI and Cycle time (some local minima for execution time where cycle time has decreased without causing additional hazards). Additionally consider more stages consumes more power (work being done in less cycle time with more latches per stage). 
 
-* Performance (execution time) \\( \Rightarrow \\) 30-40 stages
-* Manageable Power Consumption \\( \Rightarrow \\) 10-15 stages
+* Performance (execution time) $ \Rightarrow $ 30-40 stages
+* Manageable Power Consumption $ \Rightarrow $ 10-15 stages
 
 *[ALU]: Arithmetic Logic Unit
 *[CPI]: Cycles Per Instruction

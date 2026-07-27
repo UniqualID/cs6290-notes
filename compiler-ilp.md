@@ -135,11 +135,11 @@ which now compiles to:
 ```
 So the process is to take the work, copy it twice, adjust offsets, then adjust the final loop counter and branch instructions as needed. This example was an "unroll once". Unrolling twice would perform 3 iterations before branching.
 
-### Loop Unrolling Benefits: # Instructions \\(\downarrow \\)
+### Loop Unrolling Benefits: # Instructions $\downarrow $
 
 In the example above, we start from 5 instructions * 1000 loops = 5000. After loop unrolling we have 8 instructions * 500 loops = 4000. From the Iron Law, we know Execution Time = (# inst)(CPI)(Cycle Time). So just by decreasing instructions by 20% there is a significant effect on overall performance.
 
-###  Loop Unrolling Benefits: CPI \\(\downarrow \\)
+###  Loop Unrolling Benefits: CPI $\downarrow $
 Assume a processor with 4-Issue, In-Order, with perfect branch prediction. We can view how the iterations span over cycles:
 |`Loop:`            | 1 | 2 | 3 | 4 | 5 | 6 |
 |---                |---|---|---|---|---|---|

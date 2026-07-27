@@ -16,4 +16,4 @@ If you have any questions, comments, concerns, or improvements, don't hesitate t
 
 * [davidharris@gatech.edu](mailto:davidharris@gatech.edu)
 * [David Harris \| Linkedin](https://www.linkedin.com/in/davidrossharris/)
-* @drharris \(Slack\)
+* @drharris $Slack$

@@ -9,7 +9,7 @@ sidebar_label: Instruction Scheduling
 ## Improving IPC
 * ILP can be good, >> 1. 
 
-* To get IPC \\(\approx\\) ILP, need to handle control dependencies (=> Branch Prediction).
+* To get IPC $\approx$ ILP, need to handle control dependencies (=> Branch Prediction).
 
 * Need to eliminate WAR and WAW data dependencies (=> Register Renaming).
 

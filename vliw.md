@@ -10,7 +10,7 @@ sidebar_label: VLIW
 
 | | OOO Superscalar | In-Order Superscalar | VLIW |
 | --- | --- | --- | --- |
-| IPC | \\(\leq N\\) | \\(\leq N\\) | 1 large inst/cycle but does work of N "normal" inst |
+| IPC | $\leq N$ | $\leq N$ | 1 large inst/cycle but does work of N "normal" inst |
 | How to find independent instructions? | Look at >> N insts | Look at next N insts in program order | Just do next large inst |
 | Hardware Cost | $$$ | $$ | $ |
 | Help from compiler? | Compiler can help | Needs help | Completely depends on compiler for performance |

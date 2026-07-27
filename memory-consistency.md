@@ -39,7 +39,7 @@ The result of any execution should be as if accesses executed by each processor 
 
 ### Better Implementation of Sequential Consistency
 - Core can reorder loads
-- Detect when SC may be violated \\(\Rightarrow\\) Fix
+- Detect when SC may be violated $\Rightarrow$ Fix
   - How? In the ROB we have all instructions in program order, regardless of execution order.
     - If instructions actually executed in order, we're ok
     - If instructions are out of order but no other stores were done to any of the reordered addresses in the meantime, we're also ok.
@@ -50,10 +50,10 @@ The result of any execution should be as if accesses executed by each processor 
 ## Relaxed Consistency
 An alternative approach to SC is to not set the expectation to the programmers for SC, but something slightly less strict.
 - Four types of ordering
-  1. `WR A` \\(\rightarrow\\) `WR B` 
-  2. `WR A` \\(\rightarrow\\) `RD B`
-  3. `RD A` \\(\rightarrow\\) `WR B`
-  4. `RD A` \\(\rightarrow\\) `RD B`
+  1. `WR A` $\rightarrow$ `WR B` 
+  2. `WR A` $\rightarrow$ `RD B`
+  3. `RD A` $\rightarrow$ `WR B`
+  4. `RD A` $\rightarrow$ `RD B`
 - Sequential Consistency: All must be obeyed!
 - Relaxed Consistency: some of these types need not be obeyed at all the times
   - Read/Read (#4) best example
@@ -66,7 +66,7 @@ An alternative approach to SC is to not set the expectation to the programmers f
 - Example: x86 `MSYNC` instruction
   - Normally, all accesses may be reordered
   - But, no reordering across the `MSYNC`
-    - [`LW`, `SW`, `LW`, `SW`] \\(\rightarrow\\) `MSYNC`, \\(\rightarrow\\) [`LW`, `SW`, ...]
+    - [`LW`, `SW`, `LW`, `SW`] $\rightarrow$ `MSYNC`, $\rightarrow$ [`LW`, `SW`, ...]
     - Acts as a barrier between operations that expect things to be in order
     ```cpp
     while(!flag);

@@ -45,8 +45,8 @@ Similar to a cache, the lower N bits of a virtual address (where 2^N = page size
 - 1 entry per page in the virtual address space
   - even for pages the program never uses
 - Entry contains Frame Number + bits that tell us if the page is accessible
-  - Entry Size \\(\approx\\) physical address
-- Overall Size: \\(\frac{\text{virtual memory}}{\text{page size}}*\text{size of entry}\\)
+  - Entry Size $\approx$ physical address
+- Overall Size: $\frac{\text{virtual memory}}{\text{page size}}*\text{size of entry}$
 - For very large virtual address space, the page table may need to be reorganized to ensure it properly fits within memory
 
 ## Multi-Level Page Tables
@@ -63,8 +63,8 @@ We save space because we do not create an inner page table if nothing is using t
 
 ### Two-Level Page Table Size
 To calculate two-level page table size:
-1. Determine how many bits are used for the page offsets (N bits where \\(2^N\\)=page size)
-2. Determine how many bits are used for the inner and outer page tables (X and Y bits where \\(2^X\\)=outer page table entries and \\(2^Y\\)=inner page table entries)
+1. Determine how many bits are used for the page offsets (N bits where $2^N$=page size)
+2. Determine how many bits are used for the inner and outer page tables (X and Y bits where $2^X$=outer page table entries and $2^Y$=inner page table entries)
 3. Outer Page Table size is number of outer entries * entry size in bytes
 4. Inner Page Table size is number of inner entries * entry size in bytes
 5. Number of Inner Page Tables Used is determined by partitioning the utilized address space by the number of bits associated with the outer page table. Typically only a few outer entries will be used.

@@ -98,7 +98,7 @@ ILP is not equal to IPC except on a perfect/ideal out-of-order processor. So IPC
 
 ![ILP vs IPC](https://i.imgur.com/m8vSTGJ.png)
 
-Therefore, we can state ILP \\(\geq\\) IPC, as ILP is calculated using no processor limitations.
+Therefore, we can state ILP $\geq$ IPC, as ILP is calculated using no processor limitations.
 
 ### ILP and IPC Discussion
 

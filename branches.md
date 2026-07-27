@@ -33,14 +33,14 @@ The first two guesses can be combined into "is this a taken branch?"
 
 $$ CPI = 1 + \frac{mispred}{inst} * \frac{penalty}{mispred} $$
 
-The \\( \frac{mispred}{inst} \\) part is determined by the predictor accuracy. The \\(\frac{penalty}{mispred} \\) part is determined by the pipeline (where in the pipeline we figure out the misprediction).
+The $ \frac{mispred}{inst} $ part is determined by the predictor accuracy. The $\frac{penalty}{mispred} $ part is determined by the pipeline (where in the pipeline we figure out the misprediction).
 
 Assumption below: 20% of all instructions are branches (common in programs).
 
-| Accuracy \\(\downarrow\\) | Resolve in 3rd stage | Resolve in 10th stage |
+| Accuracy $\downarrow$ | Resolve in 3rd stage | Resolve in 10th stage |
 |---|:---:|:---:|
-| 50% for BR<br>100% all other | \\(1 + 0.5\*0.2\*2\\)<br>\\(= 1.2\\) | \\(1 + 0.5\*0.2\*9\\)<br>\\(= 1.9\\) |
-| 90% of BR<br>100% all other | \\(1 + 0.1\*0.2\*2\\)<br>\\(= 1.04\\) | \\(1 + 0.1\*0.2\*9\\)<br>\\(= 1.18\\) |
+| 50% for BR<br>100% all other | $1 + 0.5\*0.2\*2$<br>$= 1.2$ | $1 + 0.5\*0.2\*9$<br>$= 1.9$ |
+| 90% of BR<br>100% all other | $1 + 0.1\*0.2\*2$<br>$= 1.04$ | $1 + 0.1\*0.2\*9$<br>$= 1.18$ |
 | _(Speedup)_ | _1.15_ | _1.61_ |
 
 Conclusions: A better branch predictor will help regardless of the pipeline, but the _amount_ of help changes with the pipeline depth.
@@ -61,33 +61,33 @@ Operation: Simply increment PC (no special hardware or memory, since we have to 
 Accuracy:
 * 20% of instructions are branches
 * 60% of branches are taken
-* \\(\Rightarrow\\) Correctness: 80% (non-branches) + 8% (non-taken branches)
-* \\(\Rightarrow\\) Incorrect 12% of time
+* $\Rightarrow$ Correctness: 80% (non-branches) + 8% (non-taken branches)
+* $\Rightarrow$ Incorrect 12% of time
 * CPI = 1 + 0.12*penalty
 
 ## Why We Need Better Prediction?
 | | Not Taken<br>88% | Better<br>99% | Speedup |
 |---|:---:|:---:|:---:|
-| 5-stages<br>(3rd stage) | \\(1 + 0.12\*2\\)<br>\\(CPI = 1.24\\) | \\(1 + 0.01\*2\\)<br>\\(CPI = 1.02\\) | \\(1.22\\) |
-| 14-stages<br>(11th stage) | \\(1 + 0.12\*10\\)<br>\\(CPI = 2.2\\) | \\(1 + 0.01\*10\\)<br>\\(CPI = 1.1\\) | \\(2\\) |
-| 11th stage<br>(4 inst/cycle) | \\(0.25 + 0.12\*10\\)<br>\\(CPI = 1.45\\) | \\(0.25 + 0.01\*10\\)<br>\\(CPI = 0.35\\) | \\(4.14\\) |
+| 5-stages<br>(3rd stage) | $1 + 0.12\*2$<br>$CPI = 1.24$ | $1 + 0.01\*2$<br>$CPI = 1.02$ | $1.22$ |
+| 14-stages<br>(11th stage) | $1 + 0.12\*10$<br>$CPI = 2.2$ | $1 + 0.01\*10$<br>$CPI = 1.1$ | $2$ |
+| 11th stage<br>(4 inst/cycle) | $0.25 + 0.12\*10$<br>$CPI = 1.45$ | $0.25 + 0.01\*10$<br>$CPI = 0.35$ | $4.14$ |
 
 If we have a deeper pipeline or are able to execute more instructions per cycle, the better predictor is more important than in simpler processors, because the cost of misprediction is much higher (more instructions lost with a misprediction).
 
 ### Better Prediction - How?
 
-Predictor must compute \\(PC_{next}\\) based only on knowledge of \\(PC_{now}\\). This is not much information to decide on. It would help if we knew: 
+Predictor must compute $PC_{next}$ based only on knowledge of $PC_{now}$. This is not much information to decide on. It would help if we knew: 
 * Is it a branch?
 * Will it be taken?
 * What is the offset field of the instruction?
 
-But we don't know any of these because we're still fetching the instruction. We do, however, know the history of how \\(PC_{now}\\) has behaved in the past. So, we can go from: \\(PC_{next} = f(PC_{now})\\) to:
+But we don't know any of these because we're still fetching the instruction. We do, however, know the history of how $PC_{now}$ has behaved in the past. So, we can go from: $PC_{next} = f(PC_{now})$ to:
 
 $$ PC_{next} = f(PC_{now}, history[PC_{now}]) $$
 
 ## BTB - Branch Target Buffer
 
-The predictor can take the \\(PC_{now}\\) and uses it to index into a table called the BTB, with the output of our best guess at next PC. Later, when the branch executes, we know the actual \\(PC_{next}\\) and can compare with the predicted one. If it doesn't match, then it is handled as a misprediction and the BTB can be updated.
+The predictor can take the $PC_{now}$ and uses it to index into a table called the BTB, with the output of our best guess at next PC. Later, when the branch executes, we know the actual $PC_{next}$ and can compare with the predicted one. If it doesn't match, then it is handled as a misprediction and the BTB can be updated.
 
 ![Branch Target Buffer](https://i.imgur.com/h6Fwke1.png)
 
@@ -167,11 +167,11 @@ This predictor works the same way as the 1-bit history predictor, but now we hav
 
 ### N-bit History Predictor
 
-We can generalize to state that an N-bit history predictor can successfully predict all taken patterns of \\(length \leq N+1\\), but will cost \\(N+2*2^N\\) bits per entry and waste most 2BCs. So, while increasing N will give us the ability to predict longer patterns, we do so at rapidly increasing cost with more waste.
+We can generalize to state that an N-bit history predictor can successfully predict all taken patterns of $length \leq N+1$, but will cost $N+2*2^N$ bits per entry and waste most 2BCs. So, while increasing N will give us the ability to predict longer patterns, we do so at rapidly increasing cost with more waste.
 
 ## History-Based Predictors with Shared Counters
 
-Instead of \\(2^N\\) counters per entry, we want to use \\(\approx N\\) counters. The idea is to share 2BCs between entries instead of each entry having its own counter.
+Instead of $2^N$ counters per entry, we want to use $\approx N$ counters. The idea is to share 2BCs between entries instead of each entry having its own counter.
 
 We can do this with a Pattern History Table (PHT). This table simply keeps some PC-indexed history bits (N bits per entry), combines that with bits of the PC (XOR) to index into the BHT, each entry of which is just a single 2BC. Thus it is very possible to have two entries/history combinations using the same BHT entry
 

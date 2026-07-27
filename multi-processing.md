@@ -18,12 +18,12 @@ sidebar_label: Multi-Processing
 | MIMD<br/>(multiprocessor) | > 1 | > 1 | Multiple Instruction Multiple Data<br/> (most today, multi-core)|
 
 ## Why Multiprocessors?
-* Uniprocessors already \\(\approx\\) 4-wide
+* Uniprocessors already $\approx$ 4-wide
   * Diminishing returns from making it even wider
-  * Faster?? \\(frequency \uparrow\ \Rightarrow voltage \uparrow\ \\Rightarrow power \uparrow^3\ \Rightarrow (fire)\\)
+  * Faster?? $frequency \uparrow\ \Rightarrow voltage \uparrow\ \\Rightarrow power \uparrow^3\ \Rightarrow (fire)$
 * But Moore's Law continues!
   * 2x transistors every 18 months
-  * \\(\Rightarrow\ \approx\\)2x performance every 18 months (assuming we can use all the cores)
+  * $\Rightarrow\ \approx$2x performance every 18 months (assuming we can use all the cores)
 
 ## Multiprocessor Needs Parallel Programs!
 * Sequential (single-threaded) code is _a lot_ easier to develop
@@ -38,9 +38,9 @@ Each core has its own cache, but connected to the same bus that shares main memo
 
 ### Centralized Main Memory Problems
 * Memory Size
-  * Need large memory \\(\Rightarrow\\) slow memory
+  * Need large memory $\Rightarrow$ slow memory
 * Memory Bandwidth
-  * Misses from all cores \\(\Rightarrow\\) memory bandwidth contention
+  * Misses from all cores $\Rightarrow$ memory bandwidth contention
     * As we add more cores, it starts to serialize against memory accesses, so we lose performance benefit
 
 Works well only for smaller machines (2, 4, 8, 16 cores)
@@ -111,7 +111,7 @@ Key difference: Shared memory is easier to get a correct solution, but there may
   * (all can issue addresses to any memory address)
   * Examples: UMA, NUMA
 * Multi-threading by time-sharing a core
-  * Same core \\(\rightarrow\\) same physical memory
+  * Same core $\rightarrow$ same physical memory
   * (not really benefiting from multi-threading)
 * Hardware multithreading in a core
   * Coarse-Grain: change thread every few cycles
@@ -126,9 +126,9 @@ Without multi-threading, processor activity in terms of width is very limited - 
 
 In a Chip Multiprocessor (CMP), each core runs different threads. While the activity happens simultaneously in time, each core still has to deal with the sparse workload created by the threads it is running. (Total cost 2x)
 
-With Fine-Grain Multithreading, we have one core, but with separate sets of registers for different threads. Each thread's work switches from cycle to cycle, taking advantage of the periods of time in which a thread is waiting on something to be ready to do the next work. This keeps the core busier overall, at the slight expense of extra hardware requirements. (Total cost \\(\approx\\) 1.05x)
+With Fine-Grain Multithreading, we have one core, but with separate sets of registers for different threads. Each thread's work switches from cycle to cycle, taking advantage of the periods of time in which a thread is waiting on something to be ready to do the next work. This keeps the core busier overall, at the slight expense of extra hardware requirements. (Total cost $\approx$ 1.05x)
 
-With SMT, we can go one step further by mixing instructions from different threads into the same cycle. This dramatically reduces the total idle time of the processor. This requires much more hardware to support. (Total cost \\(\approx\\) 1.1x)
+With SMT, we can go one step further by mixing instructions from different threads into the same cycle. This dramatically reduces the total idle time of the processor. This requires much more hardware to support. (Total cost $\approx$ 1.1x)
 
 ## SMT Hardware Changes
 * Fetch
@@ -164,9 +164,9 @@ With a VIPT cache (w/o aliasing), the same virtual address will be combined with
   ```
 * Cache capacity (and associativity) shared (bad)
   * If WS(TH0) + WS(TH1) - WS(TH0, TH1) > D$ size:    
-    \\(\Rightarrow\\) Cache Thrashing
+    $\Rightarrow$ Cache Thrashing
   * If WS(TH0) < D$ size    
-    \\(\Rightarrow\\) SMT performance can be worse than one-at-a-time
+    $\Rightarrow$ SMT performance can be worse than one-at-a-time
   * If the threads share a lot of data and fit into cache, maybe SMT performance doesn't have as many issues.
 
 

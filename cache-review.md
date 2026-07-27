@@ -32,19 +32,19 @@ Access
 ## Cache Performance
 Properties of a good cache:
 - Average Memory Access Time (AMAT)
-  - \\(\text{AMAT} = \text{hit time} + \text{miss rate} * \text{miss penalty} \\)
-  - hit time \\(\Rightarrow\\) small and fast cache
-  - miss rate \\(\Rightarrow\\) large and/or smart cache
-  - miss penalty \\(\Rightarrow\\) main memory access time
+  - $\text{AMAT} = \text{hit time} + \text{miss rate} * \text{miss penalty} $
+  - hit time $\Rightarrow$ small and fast cache
+  - miss rate $\Rightarrow$ large and/or smart cache
+  - miss penalty $\Rightarrow$ main memory access time
   - "miss time" = hit time + miss penalty
-  - Alternate way to see it: \\(AMAT = (1-rate_{miss}) * t_{hit} + rate_{miss}*t_{miss} \\)
+  - Alternate way to see it: $AMAT = (1-rate_{miss}) * t_{hit} + rate_{miss}*t_{miss} $
 
 ## Cache Size in Real Processors
 Complication: several caches
 
 L1 Cache - Directly service read/write requests from the processor
 - 16KB - 64KB
-- Large enough to get \\(\approx\\) 90% hit rate
+- Large enough to get $\approx$ 90% hit rate
 - Small enough to hit in 1-3 cycles
 
 ## Cache Organization
@@ -99,8 +99,8 @@ Fully Associative = N-way set associative
 
 Always start with offset bits, based on block size. Then, determine index bits. Rest of the bits is the tag.
 
-- Offset bits = \\(log_2(\text{block size})\\)
-- Index bits = \\(log_2(\text{# of sets})) \\)
+- Offset bits = $log_2(\text{block size})$
+- Index bits = $log_2(\text{# of sets})) $
 
 ## Cache Replacement
 - Set is full

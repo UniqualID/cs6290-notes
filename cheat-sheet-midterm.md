@@ -10,31 +10,31 @@ A denser collection of important pieces of information covering lectures from In
 
 Two kinds of power a processor consumes.
 1. Dynamic Power - consumed by activity in a circuit
-   Computed by \\(P = \tfrac 12 \*C\*V^2\*f\*\alpha\\), where
-    \\(C = \text{capacitance}\\), \\(P = \text{power supply voltage}\\), \\(f = \text{frequency}\\), \\(\alpha = \text{activity factor (% of transistors active each clock cycle)}\\)
+   Computed by $P = \tfrac 12 \*C\*V^2\*f\*\alpha$, where
+    $C = \text{capacitance}$, $P = \text{power supply voltage}$, $f = \text{frequency}$, $\alpha = \text{activity factor (% of transistors active each clock cycle)}$
 2. Static Power - consumed when powered on, but idle
    - The power it takes to maintain the circuits when not in use.
-   - V \\(\downarrow\\), leakage \\(\uparrow\\)
+   - V $\downarrow$, leakage $\uparrow$
 
 ## Performance
 
-* Latency (time start \\( \rightarrow \\) done)
+* Latency (time start $ \rightarrow $ done)
 * Throughput (#/second) (not necessarily 1/latency due to pipelining)
 * Speedup - "X is N times faster than Y" (X new, Y old)
   * Speedup = speed(X)/speed(Y)
   * Speedup = throughput(X)/throughput(Y) = IPC(X)/IPC(Y)
-  * Speedup = latency(Y)/latency(X) = \\(\frac{CPI(Y)\*CTime(Y)}{CPI(X)\*CTime(X)}\\) (notice Y/X reversal)
+  * Speedup = latency(Y)/latency(X) = $\frac{CPI(Y)\*CTime(Y)}{CPI(X)\*CTime(X)}$ (notice Y/X reversal)
     * Can also multiply by nInst(Y)/nInst(X) factor
 * Performance ~ Throughput ~ 1/Latency
 * Ratios (e.g. speedup) can only be calculated via geometric mean
-  * \\(\text{geometric mean} = \sqrt[n]{a_1\*a_2\*...a_n}\\)
+  * $\text{geometric mean} = \sqrt[n]{a_1\*a_2\*...a_n}$
 * Iron Law of Performance:
   * **CPU Time** = (# instructions in the program) * (cycles per instruction) * (clock cycle time)
     * clock cycle time = 1/freq
-  * For unequal instruction times: \\(\sum_i (IC_i\* CPI_i) * \frac{\text{time}}{\text{cycle}}\\)
+  * For unequal instruction times: $\sum_i (IC_i\* CPI_i) * \frac{\text{time}}{\text{cycle}}$
 * Amdahl's Law - overall effect due to partial change
-  * \\(speedup = [(1-frac_{enh}) + \frac{frac_{enh}}{speedup_{enh}}]^{-1}\\)
-  * \\( frac_{enh} \\) represents the fraction of the execution **TIME**
+  * $speedup = [(1-frac_{enh}) + \frac{frac_{enh}}{speedup_{enh}}]^{-1}$
+  * $ frac_{enh} $ represents the fraction of the execution **TIME**
   * Consider diminishing returns by improving the same area of code.
 
 ## Pipelining
@@ -47,20 +47,20 @@ Two kinds of power a processor consumes.
     * WAR (Write-After-Read) - "Anti-", "False", or "Name" dependence
 * Hazard - when a dependence results in incorrect execution
   * Handled by Flush, Stall, and Fix values
-* More Stages \\( \rightarrow \\) more hazards (CPI \\( \uparrow \\)), but less work per stage ( cycle time \\( \downarrow \\))
+* More Stages $ \rightarrow $ more hazards (CPI $ \uparrow $), but less work per stage ( cycle time $ \downarrow $)
 * 5-stage pipeline: Fetch-Decode-Execute-Memory-Write
 
 ## Branch Prediction
-* Predictor must compute \\(PC_{next}\\) based only on knowledge of \\(PC_{now}\\)
+* Predictor must compute $PC_{next}$ based only on knowledge of $PC_{now}$
   1. Guess "is this a branch?"
   2. Guess "is it taken?"
   3. "and if so, what is the target PC"
-* Accuracy: \\( CPI = 1 + \frac{mispred}{inst} * \frac{penalty}{mispred} \\)
-  * \\( \frac{mispred}{inst} \\) is determined by the predictor accuracy.
-  * \\(\frac{penalty}{mispred} \\) is determined by the pipeline depth at misprediction.
+* Accuracy: $ CPI = 1 + \frac{mispred}{inst} * \frac{penalty}{mispred} $
+  * $ \frac{mispred}{inst} $ is determined by the predictor accuracy.
+  * $\frac{penalty}{mispred} $ is determined by the pipeline depth at misprediction.
 * Types of Predictors and components
   * Not-Taken: Always assume branch is not taken
-  * Historical: \\(PC_{next} = f(PC_{now}, history[PC_{now}])\\)
+  * Historical: $PC_{next} = f(PC_{now}, history[PC_{now}])$
   * Branch Target Buffer (BTB): simple table of next best guessed PC based on current PC
     * Use last N bits of PC (not counting final 2-4 alignment bits) to index into this table
   * Branch History Table (BHT): like BTB, but entry is a single bit that tells us Taken/Not-Taken
@@ -119,7 +119,7 @@ ILP is the IPC when the processor does the entire instruction in 1 cycle, and ca
      2. Be mindful to count how many cycles being computed over
      3. Assume ideal hardware - all instructions that can compute, will.
      4. Assume perfect same-cycle branch prediction
-* IPC should never assume "perfect processor", so ILP \\(\geq\\) IPC.
+* IPC should never assume "perfect processor", so ILP $\geq$ IPC.
 
 ## Instruction Scheduling (Tomasulo)
 ![Tomasulo's Algorithm](https://i.imgur.com/MuCQEgr.png)
