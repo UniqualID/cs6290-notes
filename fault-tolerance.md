@@ -121,8 +121,8 @@ However, reliability is worse than a single disk:
   * failures/disk/second
 * Single-Disk MTTF = $\frac{1}{f}$  (MTTDL: Mean time to data loss = $MTTF_1$)
 * N disks in RAID0
-  * $f_N = N*f_1 \Rightarrow MTTF_N = MTTDL_N = \frac{MTTF_1}{N}$
-  * 2 Disks $ \Rightarrow  MTTF_2 = \frac{MTTF_1}{2} $
+  * $f_N = N*f_1 \Rightarrow \text{MTTF}_N = \text{MTTDL}_N = \frac{\text{MTTF}_1}{N}$
+  * 2 Disks $\Rightarrow \text{MTTF}_2 = \frac{\text{MTTF}_1}{2}$
 
 ### RAID 1: Mirroring (to improve reliability)
 Same data on both disks
@@ -173,7 +173,7 @@ Performance and Reliability:
   * All disks ok for $\frac{MTTF_1}{N}$
     * If no repair, we are left with N-1 disk array: + $\frac{MTTF_1}{N-1} \rightarrow$ Bad idea
     * Repair $\Rightarrow$ chance of another failing during repair: $\frac{MTTF_1}{N-1} $: Multiply by this factor over $MTTR_1$
-  * $MTTF_{RAID4} = \frac{MTTF_1 \* MTTF_1}{N\*(N-1)\*MTTR_1}$
+  * $\text{MTTF}_{RAID4} = \frac{\text{MTTF}_1 \cdot \text{MTTF}_1}{N (N-1) \cdot \text{MTTR}_1}$
 
 Reads: [🎥 View Lecture Video (2:19)](https://www.youtube.com/watch?v=3QXaSzM2fE8)
 - If we compute the XOR of the old vs new data we are writing, we get the bit flips we're making to the data. If we then XOR this against the parity block, we perform those same bit flips on the parity data and get the new parity information.
